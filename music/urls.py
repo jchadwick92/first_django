@@ -6,12 +6,18 @@ app_name = 'music'
 
 urlpatterns = [  # Looks for functions in views
     # /music/
-    path('', views.index, name='index'),  # looks for function called index in views.
+    path('', views.IndexView.as_view(), name='index'),  # Using a class, but as_view() treats it as a function
 
-    # /music/<album_id>/
-    path('<int:album_id>/', views.detail, name='detail'),
+    # /music/pk/
+    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
-    # /music/<album_id>/favorite/
-    path('<int:album_id>/favorite/', views.favorite, name='favorite'),
+    # /music/album/add/
+    path('album/add/', views.AlbumCreate.as_view(), name='album-add'),
+
+    # /music/album/pk/
+    path('album/<int:pk>/', views.AlbumUpdate.as_view(), name='album-update'),
+
+    # /music/album/pk/delete/
+    path('album/<int:pk>/delete/', views.AlbumDelete.as_view(), name='album-delete'),
 
 ]
