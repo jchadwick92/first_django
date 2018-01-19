@@ -8,6 +8,8 @@ urlpatterns = [  # Looks for functions in views
     # /music/
     path('', views.IndexView.as_view(), name='index'),  # Using a class, but as_view() treats it as a function
 
+    path('register/', views.UserFormView.as_view(), name='register'),
+
     # /music/pk/
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
